@@ -1,12 +1,12 @@
 /* Tomorrowland Thailand 2026 · Trip data */
 window.TRIP = {
-  title: "Tomorrow Thailand",
+  title: "Tomorrowland Thailand",
   subtitle: "三人小队狂欢周",
   year: 2026,
   friends: [
-    { id: "leo", name: "Leo", color: "#C9A227" },
-    { id: "ken", name: "Ken", color: "#2A9D8F" },
-    { id: "ocreedy", name: "Ocreedy", color: "#E76F51" },
+    { id: "leo", name: "Leo", color: "#22A06B" },
+    { id: "ken", name: "Ken", color: "#E67E22" },
+    { id: "ocreedy", name: "Ocreedy", color: "#E8C547" },
   ],
   calendar: {
     start: "2026-12-07",
