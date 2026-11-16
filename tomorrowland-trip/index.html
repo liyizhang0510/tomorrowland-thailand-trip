@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#f3f5f8" />
+    <meta
+      name="description"
+      content="Tomorrow Thailand · 三人小队狂欢周 · Leo / Ken / Ocreedy"
+    />
+    <title>Tomorrow Thailand · 三人小队狂欢周</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="topbar-row">
+          <div class="brand">
+            <div class="brand-kicker">Tomorrow Thailand</div>
+            <div class="brand-title">三人小队狂欢周</div>
+          </div>
+          <button class="who-btn" id="whoBtn" type="button" aria-label="Switch user">
+            <i class="who-dot" id="whoDot"></i>
+            <span class="who-name" id="whoName">Leo</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- 总览 -->
+      <section class="panel active" data-panel="overview">
+        <h2 class="page-title">总览</h2>
+        <nav class="tabs" aria-label="页面切换" data-tabs></nav>
+
+        <div class="hero">
+          <div class="hero-eye">Dec 10 – 16 · Pattaya</div>
+          <h1>Tomorrow Thailand<br />三人小队狂欢周</h1>
+          <p>Leo · Ken · Ocreedy · Full Madness · 平安回家</p>
+          <div class="countdown" aria-label="开幕倒计时">
+            <div class="cd-cell"><span class="cd-num" id="cdD">—</span><span class="cd-label">天</span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdH">—</span><span class="cd-label">时</span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdM">—</span><span class="cd-label">分</span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdS">—</span><span class="cd-label">秒</span></div>
+          </div>
+          <div class="friends-row" id="friendsRow"></div>
+        </div>
+
+        <div class="section-label">行程日历 · 14 天</div>
+        <div class="card cal-card" id="calOverview"></div>
+
+        <div class="section-label">待办事项</div>
+        <div id="gapsBox"></div>
+
+        <div class="section-label">航班</div>
+        <div id="homeFlights"></div>
+
+        <div class="section-label">住宿</div>
+        <div class="card" id="hotelCard"></div>
+
+        <div class="section-label">电音节</div>
+        <div class="card" id="eventCard"></div>
+
+        <div class="section-label">实用建议</div>
+        <div class="card">
+          <ul class="tip-list" id="tipsList"></ul>
+        </div>
+      </section>
+
+      <!-- 日程 -->
+      <section class="panel" data-panel="days">
+        <h2 class="page-title">日程</h2>
+        <nav class="tabs" aria-label="页面切换" data-tabs></nav>
+
+        <div class="section-label">行程日历 · 14 天</div>
+        <div class="card cal-card" id="calDays"></div>
+        <div id="dayDetail"></div>
+      </section>
+
+      <!-- 出行 -->
+      <section class="panel" data-panel="ops">
+        <h2 class="page-title">出行</h2>
+        <nav class="tabs" aria-label="页面切换" data-tabs></nav>
+
+        <div class="section-label">航班</div>
+        <div id="flightOut"></div>
+        <div id="flightIn"></div>
+
+        <div class="section-label">行前清单</div>
+        <div class="card" id="checkList"></div>
+      </section>
+
+      <!-- 阵容 -->
+      <section class="panel" data-panel="lineup">
+        <h2 class="page-title">阵容</h2>
+        <nav class="tabs" aria-label="页面切换" data-tabs></nav>
+
+        <div class="must-bar">
+          <span id="mustCount">已标 0 场</span>
+          <button type="button" id="onlyMineBtn">全部场次</button>
+        </div>
+        <div class="filter-row" id="festDays"></div>
+        <div class="filter-row" id="stageFilters"></div>
+        <div class="set-list" id="setList"></div>
+      </section>
+
+      <!-- 必看 -->
+      <section class="panel" data-panel="must">
+        <h2 class="page-title">必看</h2>
+        <nav class="tabs" aria-label="页面切换" data-tabs></nav>
+
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">三人必看清单</div>
+              <div class="card-sub">点 ★ 收藏；可复制链接合并朋友的选择</div>
+            </div>
+            <span class="badge badge-gold">同步</span>
+          </div>
+          <div class="actions">
+            <button class="link-btn" type="button" id="shareStarsBtn">复制同步链接</button>
+            <button
+              class="link-btn"
+              type="button"
+              id="clearMineBtn"
+              style="background: transparent; color: var(--muted)"
+            >
+              清除我的标记
+            </button>
+          </div>
+        </div>
+        <div class="set-list" id="mustList"></div>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="personSheet">
+      <div class="sheet" role="dialog" aria-label="选择使用者">
+        <div class="sheet-handle"></div>
+        <h3>Who are you?</h3>
+        <p class="muted" style="margin-bottom: 12px">切换后，★ 收藏会记在你的名下。</p>
+        <div id="personList"></div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/photos.js"></script>
+    <script src="js/artists.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
